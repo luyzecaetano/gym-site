@@ -1,12 +1,14 @@
 import HText from "@/shared/HText";
-import { SelectedPage, type BenefitType } from "@/shared/types";
+import { type BenefitType, SelectedPage } from "@/shared/types";
 import {
+  AcademicCapIcon,
   HomeModernIcon,
   UserGroupIcon,
-  AcademicCapIcon,
 } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import Benefit from "./Benefit";
+import BenefitsPageGraphic from "@/assets/BenefitsPageGraphic.png";
+import ActionButton from "@/shared/ActionButton.tsx";
 
 const benefits: Array<BenefitType> = [
   {
@@ -52,7 +54,7 @@ const Benefits = ({ setSelectedPage }: Props) => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
+          transition={{ duration: 0.5 }}
           variants={{
             hidden: { opacity: 0, x: -50 },
             visible: { opacity: 1, x: 0 },
@@ -61,7 +63,7 @@ const Benefits = ({ setSelectedPage }: Props) => {
           <HText>MORE THAN JUST GYM. </HText>
           <p className="my-5 text-sm">
             We provide world class fitness equipment, trainers and classes to
-            get you to your ultimate fitnes goals with ease. We provide true
+            get you to your ultimate fitness goals with ease. We provide true
             care into each and every member.
           </p>
         </motion.div>
@@ -84,6 +86,76 @@ const Benefits = ({ setSelectedPage }: Props) => {
             />
           ))}
         </motion.div>
+
+        {/* GRAPHICS AND DESCRIPTION */}
+        <div className="mt-16 items-center justify-between gap-20 md:mt-28 md:flex">
+          {/* GRAPHIC */}
+          <img
+            className="mx-auto"
+            src={BenefitsPageGraphic}
+            alt="benefits-page-graphic"
+          />
+
+          {/* DESCRIPTION */}
+          <div>
+            {/* TITLE */}{" "}
+            <div className="relative">
+              <div className="before: before:absolute before:-left-20 before:-top-20 before:z-[1] before:content-abstractwaves">
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5 }}
+                  variants={{
+                    hidden: { opacity: 0, x: 50 },
+                    visible: { opacity: 1, x: 0 },
+                  }}
+                >
+                  <HText>
+                    MILLIONS OF HAPPY MEMBERS GETTING{" "}
+                    <span className="text-primary-500">FIT</span>
+                  </HText>
+                </motion.div>
+              </div>
+            </div>
+            {/* DESCRIPT */}{" "}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              variants={{
+                hidden: { opacity: 0, x: 50 },
+                visible: { opacity: 1, x: 0 },
+              }}
+            >
+              <p className="my-5">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+                aliquam dolor eaque exercitationem fugit in modi, officiis
+                possimus repudiandae vitae. Beatae consectetur deleniti incidunt
+                magnam pariatur praesentium repellendus reprehenderit
+                repudiandae! Amet delectus est id minus unde. A accusamus
+                cupiditate earum eum fugiat mollitia quasi quisquam quod tenetur
+                unde?
+              </p>
+              <p className="mb-5">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+                architecto blanditiis culpa dolorem, enim et, ex in incidunt
+                ipsa molestiae nihil, nostrum possimus quaerat quas quasi qui
+                sit soluta tempora voluptate voluptatum! At commodi corporis
+                eius eos error facere hic id impedit itaque laudantium magnam.
+              </p>
+            </motion.div>
+            {/* BUTTON */}{" "}
+            <div className="relative mt-16">
+              <div className="before:absolute before:-bottom-20 before:right-40 before:z-[-1] before:content-sparkles">
+                <ActionButton setSelectedPage={setSelectedPage}>
+                  Join Now
+                </ActionButton>
+              </div>
+            </div>
+          </div>
+        </div>
       </motion.div>
     </section>
   );
